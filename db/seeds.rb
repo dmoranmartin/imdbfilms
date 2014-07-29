@@ -5,3 +5,8 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+require 'imdb'
+movies = Imdb::Top250.new.movies
+movies.each do	|movie|
+ Movie.create(title: movie.title, year: movie.year, poster: movie.poster, plot: movie.plot)
+end
